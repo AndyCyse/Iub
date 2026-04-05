@@ -1,0 +1,112 @@
+#envelope {
+  position: relative;
+  width: 280px;
+  height: 180px;
+  margin: auto;
+  top: 150px;
+  background-color: #d9534f;
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.front {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 3;
+}
+
+.flap {
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-top: 98px solid #d9534f;
+  transform-origin: top;
+}
+
+.pocket {
+  border-left: 140px solid #f5a3a2;
+  border-right: 140px solid #f5a3a2;
+  border-bottom: 90px solid #ff6f61;
+  border-top: 90px solid transparent;
+}
+
+.letter {
+  position: relative;
+  background-color: #fff;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  top: 5%;
+  border-radius: 6px;
+  font-family: "Dancing Script", cursive;
+  padding: 10px;
+  overflow-y: auto;
+
+  z-index: 1; /* base: under flap/pocket */
+}
+
+/* TEXT */
+.words {
+  display: block;
+  margin: 4px auto;
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* OPEN / CLOSE */
+.open .flap {
+  transform: rotateX(180deg);
+  transition: 0.4s;
+}
+
+.close .flap {
+  transform: rotateX(0deg);
+  transition: 0.4s;
+}
+
+.open .letter {
+  transform: translateY(-100px); /* slides up */
+  z-index: 10; /* above flap/pocket */
+  transition: transform 0.4s ease, z-index 0.4s ease;
+}
+
+.close .flap {
+  z-index: 5; /* flap is above letter when closed */
+}
+
+/* HEARTS */
+.heart {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 80px;
+  background: #e60073;
+  border-radius: 50px 50px 0 0;
+}
+
+.heart:before {
+  transform: rotate(-45deg);
+}
+
+.heart:after {
+  transform: rotate(45deg);
+  left: -20px;
+}
+
+/* BACKGROUND */
+body {
+  background: #f0e6f6;
+}
+
+.reset {
+  text-align: center;
+  margin-top: 200px;
+}
